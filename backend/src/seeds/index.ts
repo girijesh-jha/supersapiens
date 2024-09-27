@@ -1,6 +1,6 @@
-import { seedIndustries } from '../seeds/industrySeeds';
-import { seedCompanies } from '../seeds/companySeeds';
-import { seedJobs } from '../seeds/jobSeeds';
+import { seedIndustries } from './industrySeeds';
+import { seedCompanies } from './companySeeds';
+import { seedJobs } from './jobSeeds';
 
 export const seedDatabase = async () => {
   try {
