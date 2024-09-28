@@ -5,6 +5,7 @@ import { Input } from "@/components/ui/input"
 //import { Badge } from "@/components/ui/badge"
 import { Search, User } from 'lucide-react'
 import { JobCard } from "@/components/cards/job-card"
+import './globals.css'
 
 
 const SuperSapiensLogo = () => (
