@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import { Card, CardContent } from "@/components/ui/card"
+import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 
@@ -12,56 +12,35 @@ interface JobCardProps {
   trainedLastWeek: number
 }
 
-export const JobCard: React.FC<JobCardProps> = ({
+export function JobCard({
   company,
   logoUrl,
   position,
   requirements,
   skills,
   trainedLastWeek
-}) => {
+}: JobCardProps) {
   return (
-    <Card className="overflow-hidden">
-      <CardContent className="p-6">
-        <div className="flex items-center mb-4">
-          <Image
-            src={logoUrl}
-            alt={`${company} logo`}
-            width={40}
-            height={40}
-            className="rounded-full mr-3"
-          />
-          <div>
-            <h3 className="font-semibold text-lg">{company}</h3>
-            <p className="text-gray-600">{position}</p>
-          </div>
-        </div>
-        
-        <div className="mb-4">
-          <h4 className="font-semibold mb-2">Requirements:</h4>
-          <ul className="list-disc list-inside text-sm text-gray-600">
-            {requirements.map((req, index) => (
-              <li key={index}>{req}</li>
-            ))}
-          </ul>
-        </div>
-        
-        <div className="mb-4">
-          <h4 className="font-semibold mb-2">Skills:</h4>
-          <div className="flex flex-wrap gap-2">
-            {skills.map((skill, index) => (
-              <Badge key={index} variant="secondary">{skill}</Badge>
-            ))}
-          </div>
-        </div>
-        
-        <div className="flex justify-between items-center">
-          <p className="text-sm text-gray-600">
-            <span className="font-semibold">{trainedLastWeek}</span> trained last week
-          </p>
-          <Button variant="outline">Apply Now</Button>
+    <Card className="bg-white text-gray-800">
+      <CardHeader className="flex flex-row items-center space-x-2">
+        <Image src={logoUrl} alt={`${company} logo`} width={24} height={24} />
+        <h3 className="font-bold">{company}</h3>
+      </CardHeader>
+      <CardContent>
+        <p className="font-semibold">{position}</p>
+        {requirements.map((req, index) => (
+          <p key={index} className="text-sm text-gray-600">{req}</p>
+        ))}
+        <div className="flex flex-wrap gap-2 mt-2">
+          {skills.map((skill) => (
+            <Badge key={skill} variant="secondary">{skill}</Badge>
+          ))}
         </div>
       </CardContent>
+      <CardFooter className="flex justify-between items-center">
+        <p className="text-sm text-gray-600">{trainedLastWeek} Trained last week</p>
+        <Button>Practice Interview</Button>
+      </CardFooter>
     </Card>
   )
 }
