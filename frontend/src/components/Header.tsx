@@ -21,8 +21,17 @@ const SuperSapiensLogo = () => (
 export const Header = () => {
   const [isLoginModalOpen, setIsLoginModalOpen] = useState<boolean>(false)
 
-  const openLoginModal = () => setIsLoginModalOpen(true)
-  const closeLoginModal = () => setIsLoginModalOpen(false)
+  const openLoginModal = () => {
+    console.log("Login Button clicked");
+    setIsLoginModalOpen(true)
+    console.log("Login modal opened");
+  }
+  const closeLoginModal = () => {
+    console.log("Close button clicked");
+    setIsLoginModalOpen(false)
+    console.log("Login modal closed");
+  }
+  console.log("Header component rendered");
 
   return (
     <header className="flex justify-between items-center p-4 text-white">
