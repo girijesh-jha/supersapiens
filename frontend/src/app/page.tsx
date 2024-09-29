@@ -1,8 +1,6 @@
 import Image from 'next/image'
 import { Button } from "@/components/ui/button"
 import { Card, CardContent} from "@/components/ui/card"
-import { Input } from "@/components/ui/input"
-import { Search } from 'lucide-react'
 import './globals.css'
 import { Header } from "@/components/Header"
 import { SearchBar } from "@/components/SearchBar"
