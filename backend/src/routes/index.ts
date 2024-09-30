@@ -1,33 +1,14 @@
-import { seedIndustries } from '../seeds/industrySeeds';
-import { seedCompanies } from '../seeds/companySeeds';
-import { seedJobs } from '../seeds/jobSeeds';
+// src/routes/index.ts
 
-export const seedDatabase = async () => {
-  try {
-    console.log('Starting database seeding...');
-    
-    await seedIndustries();
-    console.log('Industries seeded successfully');
-    
-    await seedCompanies();
-    console.log('Companies seeded successfully');
-    
-    await seedJobs();
-    console.log('Jobs seeded successfully');
-    
-    console.log('Database seeding completed successfully');
-  } catch (error) {
-    console.error('Error seeding database:', error);
-    throw error;
-  }
-};
+import express from 'express';
+import industryRoutes from './industryRoutes';
+import companyRoutes from './companyRoutes';
+import jobRoutes from './jobRoutes';
 
-// If you want to run the seeding process directly from this file
-if (require.main === module) {
-  seedDatabase()
-    .then(() => process.exit(0))
-    .catch((error) => {
-      console.error('Seeding failed:', error);
-      process.exit(1);
-    });
-}
+const router = express.Router();
+
+router.use('/industries', industryRoutes);
+router.use('/companies', companyRoutes);
+router.use('/jobs', jobRoutes);
+
+export default router;
